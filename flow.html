@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+ <title>Flow</title>
+
+<style>
+body{
+    height: 3000px;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.back{
+    background-image: url(flow/images/back.webp);
+    background-repeat: no-repeat;
+    width: 1690px;
+    height: 100%;
+    position: fixed;
+    border: 5px solid black;
+    left: -1vh;
+    top: -1vh;
+    background-size: cover;
+}
+
+.video {
+    position: fixed;
+    left: 2vh;
+    top: 10px;
+    width: 50%;
+    height: 80%;
+    background-image: url("http://360tv.ru/binfiles/images/20150424/ba10f44c.jpg");
+    background-size: 190%;
+    background-repeat: no-repeat;
+    background-position: -45vh -5vh ;
+  }
+  #text{
+    position: fixed;
+    left: 40vh;
+    top: 70vh;
+  }
+  #slova{
+    z-index: 99;
+    position: fixed;
+    width: 80vh;
+  }
+.word{
+    position: fixed;
+    left: 95vh;
+    top: 15vh;
+}
+</style>
+
+    <div class="back"><img src="flow/images/text.png" id="text"></div>
+
+    <div class="word"><img src="flow/images/slova.png" id="slova"></div>
+
+<script>
+   var images = ["https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m01.webp", 
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m02.webp", 
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m03.webp", 
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m04.webp", 
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m05.webp", 
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m06.webp", 
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m07.webp", 
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m08.webp", 
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m09.webp", 
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m010.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m011.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m012.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m013.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m014.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m015.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m016.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m017.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m018.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m019.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m020.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m021.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m022.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m023.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m024.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m025.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m026.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m027.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m028.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m029.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m030.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m031.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m032.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m033.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m034.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m035.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m036.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m037.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m038.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m039.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m040.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m041.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m042.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m043.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m044.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m045.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m046.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m047.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m048.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m049.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m050.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m051.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m052.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m053.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m054.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m055.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m056.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m057.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m058.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m059.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m060.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m061.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m062.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m063.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m064.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m065.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m066.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m067.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m068.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m069.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m070.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m071.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m072.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m073.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m074.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m075.webp",
+"https://dlcdnwebimgs.asus.com/files/media/F8CC9D33-7136-4A56-BD5C-E034182DFB87/v1/images/large/2x/animation/s2/comp/m076.webp"],
+   len = images.length;
+   for (var i=0; i<len; i++)  {
+      var img = new Image();
+          img.src = images[i]
+    } ;
+window.onload = function() {
+    var videoElem = document.querySelector('.video'),
+    scrollHeight = document.documentElement.scrollHeight,
+    clientHeight = document.documentElement.clientHeight,
+    maxScroll = Math.max(scrollHeight, clientHeight) - clientHeight,
+    step = maxScroll/len;
+
+
+window.onscroll = function(){
+    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+    for (var i=0; i < len; i++)  {
+      if (i * step + step >= scrolled) break
+    }
+    videoElem.style.backgroundImage = "url("+images[i]+")";
+    }
+}
+
+</script>
+</head>
+<body>
+<div class="video"></div>
+</body>
+</html>

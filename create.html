@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>constructor</title>
+    <link rel="stylesheet" href="create/style.css">
+</head>
+<body>
+    
+    <form id="laptopForm">
+        <label for="processor">Процессор:</label>
+        <select id="processor">
+            <option value="i5">Intel i5</option>
+            <option value="i7">Intel i7</option>
+        </select>
+    
+        <label for="graphicsCard">Видеокарта:</label>
+        <select id="graphicsCard">
+            <option value="gtx1050">NVIDIA GTX 1050</option>
+            <option value="gtx1660">NVIDIA GTX 1660</option>
+        </select>
+    
+        <label for="ram">Оперативная память:</label>
+        <select id="ram">
+            <option value="8GB">8GB</option>
+            <option value="16GB">16GB</option>
+        </select>
+    
+        <button type="button" onclick="buildLaptop()">Собрать ноутбук</button>
+    </form>
+
+
+
+
+
+
+<center>
+    <div class="puzzle">
+        <div class="row">
+          <div class="col"></div>
+        </div>
+        <div class="row">
+          <div class="col"></div>
+      </div>
+      <div class="images">
+          <img id="slice_0_0" draggable="true" src="create/images/flowdown.jpg" class="flow">
+          <img id="slice_0_1" draggable="true" src="create/images/flowup.jpg" class="flow2" >
+          <img id="slice_0_0" draggable="true" src="create/images/zephyrdown.jpg" class="flow">
+          <img id="slice_0_1" draggable="true" src="create/images/zephyrup.jpg" class="flow2" >
+          <img id="slice_0_0" draggable="true" src="create/images/strixdown.jpg" class="flow">
+          <img id="slice_0_1" draggable="true" src="create/images/strixup.jpg" class="flow2" >
+      </div>
+      <button id="clearButton">Очистить</button>
+    </center>
+
+
+
+
+
+
+
+
+<script src="create/script.js"></script>
+</body>
+</html>

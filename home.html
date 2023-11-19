@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMO</title>
+  <link rel="stylesheet" href="page1/style.css">
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap">
+</head>
+<body>
+  
+  <div class="up">
+    <img src="page1/images/logo.jpg" id="logo">
+    <div id="root"></div>
+    <button id="openModalBtn"><span style="font-family: Oswald;">ЗАКАЗАТЬ НОУТБУК</span></button>
+    <div id="myModal">
+      <p><div class="contact-form">
+        <center>
+        <h2>РЕКВИЗИТЫ ДЛЯ ЗАКАЗА</h2>
+        <form action="обработчик.php" method="post">
+          <label for="email">Ваша электронная почта:</label>
+          <input type="email" id="email" name="email" required>
+      
+          <label for="message">Сообщение:</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+      
+          <label for="postal_code">Почтовый индекс:</label>
+          <input type="text" id="postal_code" name="postal_code" required>
+      
+          <label for="address">Адрес:</label>
+          <input type="text" id="address" name="address" required>
+      
+          <label for="card_number">Номер карты:</label>
+          <input type="text" id="card_number" name="card_number" required>
+      
+          <label for="card_expiry_date">Дата окончания:</label>
+          <input type="text" id="card_expiry_date" name="card_expiry_date" placeholder="MM/YYYY" required>
+      
+          <label for="card_cvc">CVC код:</label>
+          <input type="text" id="card_cvc" name="card_cvc" required>
+      
+          <label for="productSelect">Выберите продукт:</label>
+        <select id="productSelect" onchange="updatePrice()">
+            <option value="product1">ROG FLOW</option>
+            <option value="product2">ROG ZEPHYRUS</option>
+            <option value="product3">ROG STRIX</option>
+        </select>
+
+        <p>Цена: <span id="price">0</span> тенге.</p>
+      
+        <button onclick="showMessage1()">Оплатить</button>
+      </form>
+    </div></p>
+      <button id="closeModalBtn">Закрыть</button>
+      
+  </div>
+  <div ><a href="create.html" class="create">СОБРАТЬ НОУТБУК</a></div>
+  </div>
+
+  <div id="imageContainer">
+    <img class="image" src="page1/images/fwebp.webp" alt="Image 1">
+    <img class="image" src="page1/images/image2.webp" alt="Image 2">
+    <img class="image" src="page1/images/image3.webp" alt="Image 3">
+</div>
+
+<div id="progressBar">
+    <div id="progressFill"></div>
+</div>
+
+
+
+<center><p style="font-size: 5vh;">НОУТБУКИ</p></center>
+<center>
+<div class="notebooks">
+<a href="flow.html"><div class="flow"><span class="rf">ROG FLOW</span></div></a>
+<a href="zephyrus.html"><div class="zephyrus"><span class="zs">ROG ZEPHYRUS</span></div></a>
+<a href="strix.html"><div class="strix"><span class="rs">ROG STRIX</span></div></a>
+</div></center>
+
+<div class="footer">
+  <img src="page1/images/logo.jpg" class="foot"><span class="apple">
+    Добро пожаловать на BMO - ваш ультрасовременный магазин ноутбуков! Мы гордимся предоставлением широкого ассортимента выдающихся ноутбуков,<br> которые сочетают в себе инновационные технологии, стильный дизайн и надежность.<br><br>
+
+    Наша миссия:
+    В BMO мы стремимся сделать ваш выбор ноутбука легким и удовлетворительным, предлагая только лучшие модели от ведущих производителей.<br><br>
+    
+    Почему BMO?
+    Большой выбор продукции: BMO предоставляет разнообразные модели от ведущих мировых брендов. У нас есть идеальный ноутбук для каждого, от профессионала до студента.<br>
+    
+    Технологии будущего: Мы постоянно обновляем наш ассортимент, чтобы предложить вам последние инновации в мире технологий.<br>
+    
+    Компетентная поддержка: Наша команда экспертов всегда готова предоставить вам профессиональные консультации и помочь выбрать идеальный ноутбук под ваши потребности.<br>
+    
+    Цены, доступные каждому: Мы стремимся сделать высокотехнологичные ноутбуки доступными, предоставляя конкурентоспособные цены.<br>
+    
+    Превосходный сервис: BMO не только предоставляет качественные продукты, но и обеспечивает первоклассный сервис для удовлетворения потребностей наших клиентов.<br>
+    
+    Наша цель:
+    BMO создан для того, чтобы облегчить вам путь к современным технологиям. Присоединяйтесь к нам и откройте мир инноваций!<br>
+  </span>
+</div>
+
+
+
+  
+
+
+
+
+
+
+
+<script src="page1/java.js"></script>
+
+<script type="text/babel">
+  const { useState } = React;
+
+  const HoverMenu = () => {
+    const [isHovered, setIsHovered] = useState(false);
+
+    const handleMouseEnter = () => {
+      setIsHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+      setIsHovered(false);
+    };
+
+    return (
+      <div
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        style={{ position: 'relative', display: 'inline-block' }}
+      >
+        <span>НОУТБУКИ</span>
+        {isHovered && (
+          <div
+            style={{
+              width:'20vh',
+              position: 'absolute',
+              bottom: '-21vh',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              backgroundColor: 'white',
+              padding: '10px',
+              borderRadius: '5px',
+              boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+              zIndex: '1',
+            }}
+          >
+            <p class="okno">
+              <a href="flow.html">ROG flow X13</a><br></br>
+              <a href="zephyrus.html">Zephyrus G14</a><br></br>
+              <a href="strix.html">Strix G15</a>
+              
+              </p>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  ReactDOM.render(<HoverMenu />, document.getElementById('root'));
+</script>
+
+
+</body>
+</html>
